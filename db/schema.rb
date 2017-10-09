@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009111302) do
+ActiveRecord::Schema.define(version: 20171009155920) do
+
+  create_table "journeys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "taxi_id"
+    t.decimal  "start_latitude",  precision: 10
+    t.decimal  "start_longitude", precision: 10
+    t.decimal  "end_latitude",    precision: 10
+    t.decimal  "end_longitude",   precision: 10
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "state",                          default: 0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
 
   create_table "taxis", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "color"
-    t.decimal  "location_latitude",  precision: 10, scale: 6
-    t.decimal  "location_longitude", precision: 10, scale: 6
+    t.decimal  "location_latitude",  precision: 10, scale: 6,                 null: false
+    t.decimal  "location_longitude", precision: 10, scale: 6,                 null: false
     t.boolean  "booked",                                      default: false
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false

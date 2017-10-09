@@ -18,10 +18,6 @@ class Taxi < ApplicationRecord
     distance_between(location_latitude, location_longitude, latitude, longitude)
   end
 
-  def booked?
-    booked
-  end
-
   def hipster?
     color == 'pink'
   end
